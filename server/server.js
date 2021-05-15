@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 require('dotenv').config();
 
 const app = express();
@@ -15,6 +16,7 @@ const options = {
 const io = require('socket.io')(server, options);
 const uuid = require('short-uuid');
 
+app.use(express.static(path.join(__dirname, '..', 'client', 'build')));
 app.use(cors());
 app.use(express.json());
 app.use(
